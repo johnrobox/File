@@ -80,19 +80,20 @@ var del_id = element.attr("id");
 //Built a url to send
 var info = 'id=' + del_id;
  bootbox.confirm("Are you sure?",function(result){
-		if(result){
+		if(result==true){
 			$.ajax({
 		   type: "GET",
 		   url: "delete.php",
 		   data: info,
    			success: function(){
-   
+				 element.parents(".record").animate({ backgroundColor: "#fbc7c7", display: "none" }, "fast")
+				 .animate({ opacity: "hide" }, "slow");
+				 bootbox.alert("Record successfully deleted.");
    			}
  			});
-         
+        
 		}
-		element.parents(".record").animate({ backgroundColor: "#fbc7c7", display: "none" }, "fast")
-		.animate({ opacity: "hide" }, "slow");
+		
  	}
  );
 		
